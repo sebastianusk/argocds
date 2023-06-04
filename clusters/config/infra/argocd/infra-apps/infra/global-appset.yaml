@@ -1,26 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: namespace-appset
+  name: global-appset
 spec:
   generators:
     - git:
-        repoURL: git@github.com:payfazz/nom-nom.git
+        repoURL: git@github.com:sebastianusk/argocds.git
         revision: master
         directories:
-          - path: "clusters/config/infra/namespace/*"
+          - path: "clusters/config/infra/global/*"
   template:
     metadata:
-      name: "namespace-appset-{{path.basename}}"
+      name: "global-appset-{{path.basename}}"
     spec:
       project: infra
       source:
-        repoURL: git@github.com:payfazz/nom-nom.git
+        repoURL: git@github.com:Xfers/nom-nom.git
         targetRevision: master
         path: "{{path}}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: namespace
+        namespace: default
       syncPolicy:
         automated:
           prune: true

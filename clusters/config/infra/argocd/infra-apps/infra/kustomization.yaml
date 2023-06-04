@@ -1,5 +1,5 @@
 namespace: argocd
 
 resources:
-  - infra
+  - global-appset.yaml
   # - app-project
