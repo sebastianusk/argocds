@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: namespace-appset
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:payfazz/nom-nom.git
+        revision: master
+        directories:
+          - path: "clusters/config/clustername/namespace/*"
+  template:
+    metadata:
+      name: "namespace-appset-{{path.basename}}"
+    spec:
+      project: infra
+      source:
+        repoURL: git@github.com:payfazz/nom-nom.git
+        targetRevision: master
+        path: "{{path}}"
+      destination:
+        server: https://clustername.eks
+        namespace: namespace
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
