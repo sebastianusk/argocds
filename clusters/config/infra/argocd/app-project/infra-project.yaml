@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  name: infra
+spec:
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  description: ArgoCD project for the ArgoCD apps owned by infra team
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  sourceRepos:
+    - git@github.com:sebastianusk/argcods.git
