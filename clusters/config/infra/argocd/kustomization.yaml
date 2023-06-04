@@ -1,5 +1,5 @@
 namespace: argocd
 
 resources:
-  - parent-apps
+  # - parent-apps
   # - app-project
