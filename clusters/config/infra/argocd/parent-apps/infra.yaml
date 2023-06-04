@@ -11,7 +11,7 @@ spec:
   project: infra
   source:
     path: clusters/config/infra/argocd/infra-apps/infra
-    repoURL: git@github.com:payfazz/nom-nom.git
+    repoURL: git@github.com:sebastianusk/argcods.git
     targetRevision: master
   syncPolicy:
     automated:
