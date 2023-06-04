@@ -15,7 +15,7 @@ spec:
     spec:
       project: infra
       source:
-        repoURL: git@github.com:Xfers/nom-nom.git
+        repoURL: git@github.com:sebastianusk/argocds.git
         targetRevision: master
         path: "{{path}}"
       destination:
