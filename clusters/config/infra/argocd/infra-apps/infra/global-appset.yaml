@@ -11,7 +11,7 @@ spec:
           - path: "clusters/config/infra/global/*"
   template:
     metadata:
-      name: "global-appset-{{path.basename}}"
+      name: "infra-global-appset-{{path.basename}}"
     spec:
       project: infra
       source:

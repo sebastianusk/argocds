@@ -11,7 +11,7 @@ spec:
           - path: "clusters/config/staging/global/*"
   template:
     metadata:
-      name: "global-appset-{{path.basename}}"
+      name: "staging-global-appset-{{path.basename}}"
     spec:
       project: infra
       source:
