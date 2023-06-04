@@ -16,4 +16,4 @@ spec:
     - group: "*"
       kind: "*"
   sourceRepos:
-    - git@github.com:sebastianusk/argcods.git
+    - git@github.com:sebastianusk/argocds.git
