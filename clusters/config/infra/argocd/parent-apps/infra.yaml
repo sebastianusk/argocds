@@ -11,7 +11,7 @@ spec:
   project: infra
   source:
     path: clusters/config/infra/argocd/infra-apps/infra
-    repoURL: git@github.com:sebastianusk/argcods.git
+    repoURL: git@github.com:sebastianusk/argocds.git
     targetRevision: master
   syncPolicy:
     automated:
