@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: infra
   source:
-    path: clusters/config/infra/argocd/infra-apps
+    path: clusters/config/mgmt/argocd/infra-apps
     repoURL: git@github.com:sebastianusk/argocds.git
     targetRevision: master
   syncPolicy:

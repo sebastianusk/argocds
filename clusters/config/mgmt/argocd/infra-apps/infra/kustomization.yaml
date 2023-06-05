@@ -1,7 +1,6 @@
 namespace: argocd
 
-namePrefix: staging-infra-
+namePrefix: infra-
 
 resources:
   - global-appset.yaml
-  # - app-project
