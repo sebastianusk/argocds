@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: datadog-appset
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:sebastianusk/argocds.git
+        revision: master
+        directories:
+          - path: "clusters/config/mgmt/datadog/*"
+  template:
+    metadata:
+      name: "infra-datadog-appset-{{path.basename}}"
+    spec:
+      project: infra
+      source:
+        repoURL: git@github.com:sebastianusk/argocds.git
+        targetRevision: master
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

@@ -3,4 +3,5 @@ namespace: argocd
 namePrefix: infra-
 
 resources:
+  - datadog-appset.yaml
   - global-appset.yaml
