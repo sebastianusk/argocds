@@ -8,7 +8,7 @@ spec:
         repoURL: git@github.com:sebastianusk/argocds.git
         revision: master
         directories:
-          - path: "clusters/config/infra/global/*"
+          - path: "clusters/config/mgmt/global/*"
   template:
     metadata:
       name: "infra-global-appset-{{path.basename}}"
