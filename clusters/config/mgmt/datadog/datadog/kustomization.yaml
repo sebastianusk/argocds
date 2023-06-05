@@ -1,7 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../base/datadog/v1
   - datadog-credential.yaml
-generators:
-  - generators.yaml
+helmCharts:
+  - name: datadog
+    repo: https://helm.datadoghq.com
+    version: 3.6.7
+    releaseName: datadog
+    namespace: datadog
+    valuesFile: values.yaml
+    additionalValuesFiles:
+      - ../../../base/datadog/v1/values.yaml
+    includeCRDs: true

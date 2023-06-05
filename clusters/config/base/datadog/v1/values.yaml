@@ -4,9 +4,6 @@ datadog:
   apiKeyExistingSecret: datadog-credential
   appKeyExistingSecret: datadog-credential
 
-  # Lowercase letters, numbers, and hyphens only.
-  clusterName: cop-staging-1-25
-
   nodeLabelsAsTags:
     beta.kubernetes.io/instance-type: aws-instance-type
 
