@@ -7,7 +7,9 @@ helmCharts:
     version: 3.6.7
     releaseName: datadog
     namespace: datadog
-    valuesFile: values.yaml
-    additionalValuesFiles:
-      - ../../../base/datadog/v1/values.yaml
+    valuesFile: ../../../base/datadog/v1/values.yaml
+    valuesInline:
+      datadog:
+        clusterName: mgmt
+    valuesMerge: merge
     includeCRDs: true
