@@ -1,0 +1,4 @@
+namespace: datadog
+
+resources:
+  - datadog.yaml

@@ -1,0 +1,126 @@
+# Check the GitHub to know what the attributes mean
+# https://github.com/DataDog/helm-charts/tree/main/charts/datadog
+datadog:
+  apiKeyExistingSecret: datadog-credential
+  appKeyExistingSecret: datadog-credential
+
+  # Lowercase letters, numbers, and hyphens only.
+  clusterName: cop-staging-1-25
+
+  nodeLabelsAsTags:
+    beta.kubernetes.io/instance-type: aws-instance-type
+
+  collectEvents: true
+
+  prometheusScrape:
+    enabled: true
+
+  leaderElection: true
+
+  logs:
+    enabled: true
+    containerCollectAll: true
+
+  processAgent:
+    enabled: true
+
+  dogstatsd:
+    useHostPort: true
+    nonLocalTraffic: true
+    # We want to auto tag custom events & metrics with origin so it's easier to filter them.
+    # https://docs.datadoghq.com/developers/dogstatsd/unix_socket/?tab=kubernetes#origin-detection
+    originDetection: true
+    useHostPID: true
+
+  apm:
+    portEnabled: true
+
+  confd:
+    docker.yaml: |-
+      init_config:
+      instances:
+        - # Collect disk usage per container with docker.container.size_rw and docker.container.size_rootfs metrics.
+          # Default to false.
+          collect_container_size: true
+
+          # Set the frequency of collection of disk container size
+          collect_container_size_frequency: 60
+
+  # ref: https://docs.datadoghq.com/agent/docker/?tab=standard#environment-variables
+  # ref: https://docs.datadoghq.com/containers/kubernetes/configuration#environment-variables
+  env:
+    - name: DD_CONTAINER_EXCLUDE_LOGS
+      value: "image:datadog/agent"
+    - name: DD_PROCESS_AGENT_ENABLED
+      value: "true"
+
+  # Needed for K8s version >= 1.22
+  # https://github.com/DataDog/helm-charts/issues/415
+  kubeStateMetricsEnabled: false # to avoid deploying kube-state-metrics chart
+  kubeStateMetricsCore:
+    enabled: true
+
+agents:
+  enabled: true
+  priorityClassName: system-cluster-critical
+  tolerations:
+    - effect: NoSchedule
+      key: env
+      value: infra
+  containers:
+    initContainers:
+      resources:
+        requests:
+          cpu: 120m
+          memory: 140Mi
+        limits:
+          cpu: 120m
+          memory: 140Mi
+    agent:
+      resources:
+        requests:
+          cpu: 150m
+          memory: 250Mi
+        limits:
+          cpu: 150m
+          memory: 250Mi
+    traceAgent:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 130Mi
+        limits:
+          cpu: 100m
+          memory: 130Mi
+    processAgent:
+      resources:
+        requests:
+          cpu: 22m
+          memory: 95Mi
+        limits:
+          cpu: 22m
+          memory: 95Mi
+
+clusterAgent:
+  enabled: true
+  priorityClassName: system-cluster-critical
+  env:
+    # This is required to avoid the issue https://github.com/DataDog/datadog-agent/issues/14152
+    # Also, adding this env can make the host name consistent
+    - name: DD_HOSTNAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+  metricsProvider:
+    enabled: true
+    useDatadogMetrics: true
+  admissionController:
+    enabled: true
+    mutateUnlabelled: true
+  resources:
+    requests:
+      cpu: 200m
+      memory: 256Mi
+    limits:
+      cpu: 200m
+      memory: 256Mi

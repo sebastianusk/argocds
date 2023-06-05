@@ -1,0 +1,11 @@
+apiVersion: builtin
+kind: HelmChartInflationGenerator
+metadata:
+  name: datadog
+releaseName: datadog
+name: datadog
+version: 3.30.3
+repo: https://helm.datadoghq.com
+valuesInline:
+  datadog:
+    clusterName: mgmt
