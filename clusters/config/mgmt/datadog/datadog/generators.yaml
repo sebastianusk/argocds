@@ -1,5 +1,7 @@
 resources:
   - ../../../base/datadog/v1
 
-patchesStrategicMerge:
-  - datadog.yaml
+patches:
+  - path: datadog.yaml
+    target:
+      kind: HelmChartInflationGenerator
