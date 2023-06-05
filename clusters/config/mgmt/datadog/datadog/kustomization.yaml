@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - ../../../base/datadog/v1
   - datadog-credential.yaml
-
-patchesStrategicMerge:
-  - datadog.yaml
+# patchesStrategicMerge:
+# - datadog.yaml
