@@ -1,7 +1,0 @@
-resources:
-  - ../../../base/datadog/v1
-
-patches:
-  - path: datadog.yaml
-    target:
-      kind: HelmChartInflationGenerator
