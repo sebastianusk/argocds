@@ -100,10 +100,22 @@ applicationsets:
         name: "{{name}}-datadog-v1-appset"
       spec:
         project: "infra"
-        source:
-          repoURL: git@github.com:sebastianusk/argocds.git
-          targetRevision: HEAD
-          path: "clusters/config/{{name}}/datadog"
+        sources:
+          - repoURL: git@github.com:sebastianusk/argocds.git
+            targetRevision: HEAD
+            path: "clusters/config/{{name}}/datadog"
+          - chart: datadog
+            repoURL: https://helm.datadoghq.com
+            targetRevision: 3.6.7
+            helm:
+              releaseName: datadog
+            valueFiles:
+              - $values/clusters/config/base/datadog/v1/values.yaml
+              - $values/clusters/config/{{name}}/datadog/values.yaml
+          - repoURL: git@github.com:sebastianusk/argocds.git
+            targetRevision: HEAD
+            ref: values
+
         destination:
           server: https://kubernetes.default.svc
           namespace: default
