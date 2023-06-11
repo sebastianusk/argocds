@@ -1,0 +1,6 @@
+secretGenerator:
+  - name: datadog-credential
+    type: Opaque
+    literals:
+      - api-key: vault:sre/data/datadog/cop-staging#api-key
+      - app-key: vault:sre/data/datadog/cop-staging#app-key
