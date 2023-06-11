@@ -1,7 +1,7 @@
 namespace: argocd
 
 helmCharts:
-  - name: argo-apps
+  - name: argo/argocd-apps
     repo: https://helm.datadoghq.com
     version: 1.2.0
     releaseName: infra-argo-apps
