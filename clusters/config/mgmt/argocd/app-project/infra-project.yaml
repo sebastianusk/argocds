@@ -17,3 +17,4 @@ spec:
       kind: "*"
   sourceRepos:
     - git@github.com:sebastianusk/argocds.git
+    - https://helm.datadoghq.com
