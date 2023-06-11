@@ -109,9 +109,9 @@ applicationsets:
             targetRevision: 3.6.7
             helm:
               releaseName: datadog
-            valueFiles:
-              - $values/clusters/config/base/datadog/v1/values.yaml
-              - $values/clusters/config/{{name}}/datadog/values.yaml
+              valueFiles:
+                - $values/clusters/config/base/datadog/v1/values.yaml
+                - $values/clusters/config/{{name}}/datadog/values.yaml
           - repoURL: git@github.com:sebastianusk/argocds.git
             targetRevision: HEAD
             ref: values
