@@ -93,8 +93,9 @@ applicationsets:
   - name: datadog-v1-apps
     generators:
       - list:
-          elements:
-            - name: mgmt
+        elements:
+          - name: mgmt
+    template:
       metadata:
         name: "{{name}}-datadog-v1-appset"
       spec:
