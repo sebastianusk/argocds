@@ -1,5 +1,10 @@
 namespace: argocd
 
-resources:
-  - infra
-  - staging
+helmCharts:
+  - name: argo-apps
+    repo: https://helm.datadoghq.com
+    version: 1.2.0
+    releaseName: infra-argo-apps
+    namespace: argocd
+    valuesFile: ./values.yaml
+    includeCRDs: true
