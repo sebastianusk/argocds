@@ -94,16 +94,16 @@ applicationsets:
     generators:
       - list:
         elements:
-          - cluster: mgmt
+          - name: mgmt
     template:
       metadata:
-        name: "{{cluster}}-datadog-v1-appset"
+        name: "{{name}}-datadog-v1-appset"
       spec:
         project: "infra"
         source:
           repoURL: git@github.com:sebastianusk/argocds.git
           targetRevision: HEAD
-          path: "clusters/config/{{cluster}}/datadog"
+          path: "clusters/config/{{name}}/datadog"
         destination:
           server: https://kubernetes.default.svc
           namespace: default
