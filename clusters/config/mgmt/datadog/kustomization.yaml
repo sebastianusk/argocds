@@ -1,15 +1,2 @@
 resources:
   - datadog-credential.yaml
-
-helmCharts:
-  - name: datadog
-    repo: https://helm.datadoghq.com
-    version: 3.6.7
-    releaseName: datadog
-    namespace: datadog
-    valuesFile: ../../base/datadog/v1/values.yaml
-    valuesInline:
-      datadog:
-        clusterName: mgmt
-    valuesMerge: merge
-    includeCRDs: true
