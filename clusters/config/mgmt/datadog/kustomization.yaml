@@ -1,6 +1,15 @@
-secretGenerator:
-  - name: datadog-credential
-    type: Opaque
-    literals:
-      - api-key: vault:sre/data/datadog/cop-staging#api-key
-      - app-key: vault:sre/data/datadog/cop-staging#app-key
+resources:
+  - datadog-credential.yaml
+
+helmCharts:
+  - name: datadog
+    repo: https://helm.datadoghq.com
+    version: 3.6.7
+    releaseName: datadog
+    namespace: datadog
+    valuesFile: ../../../base/datadog/v1/values.yaml
+    valuesInline:
+      datadog:
+        clusterName: mgmt
+    valuesMerge: merge
+    includeCRDs: true
