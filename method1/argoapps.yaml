@@ -5,11 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: echo-server
-    repoURL: https://ealenn.github.io/charts
-    helm:
-      releaseName: method1
+  sources:
+    - chart: echo-server
+      repoURL: https://ealenn.github.io/charts
+      helm:
+        releaseName: method1
+        valueFiles:
+          - $values/method1/base/values.yaml
+          - $values/method1/cluster/values.yaml
+    - repoURL: git@github.com:sebastianusk/argocds.git
+      targetRevision: HEAD
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd
