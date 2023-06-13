@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: method1
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: echo-server
+    repoURL: https://ealenn.github.io/charts
+    helm:
+      releaseName: method1
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: argocd
