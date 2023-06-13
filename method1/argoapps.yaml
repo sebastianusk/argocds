@@ -8,6 +8,7 @@ spec:
   sources:
     - chart: echo-server
       repoURL: https://ealenn.github.io/charts
+      targetRevision: 0.5.0
       helm:
         releaseName: method1
         valueFiles:
