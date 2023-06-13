@@ -1,0 +1,14 @@
+# Source: echo-server/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo
+  namespace: argocd
+spec:
+  template:
+    spec:
+      containers:
+        - name: echo
+          env:
+            - name: IDENTIFIER
+              value: "method3-override"

@@ -1,0 +1,3 @@
+resources:
+  - ../base/template.yaml
+  - ./override.yaml

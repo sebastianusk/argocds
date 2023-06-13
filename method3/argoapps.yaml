@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: method3
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:sebastianusk/argocds.git
+    targetRevision: HEAD
+    path: method3/cluster
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: method3
