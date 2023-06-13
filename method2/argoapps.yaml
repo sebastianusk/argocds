@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: method1
+  name: method2
   namespace: argocd
 spec:
   project: default
@@ -11,4 +11,4 @@ spec:
     path: method2/cluster
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: method1
+    namespace: method2
