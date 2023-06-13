@@ -7,8 +7,8 @@ spec:
   project: default
   sources:
     - chart: echo-server
-      repoURL: https://ealenn.github.io/charts
-      targetRevision: 0.5.0
+      repoURL: https://kubernetes-charts.banzaicloud.com
+      targetRevision: 0.0.1
       helm:
         releaseName: method1
         valueFiles:

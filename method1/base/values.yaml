@@ -1,2 +1,2 @@
-replicaCount: 2
-fullnameOverride: base
+replicas: 1
+identifier: "base"
