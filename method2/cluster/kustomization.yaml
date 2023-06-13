@@ -5,6 +5,6 @@ helmCharts:
     releaseName: method2
     namespace: method2
     valuesFile: ../base/values.yaml
-    additionalValueFiles:
+    additionalValuesFiles:
       - ./values.yaml
     valuesMerge: merge
