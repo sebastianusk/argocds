@@ -1,7 +1,7 @@
 helmCharts:
   - name: echo-server
     repo: https://kubernetes-charts.banzaicloud.com
-    version: 3.6.7
+    version: 0.0.1
     releaseName: method2
     namespace: method2
     valuesFile: ../base/values.yaml
