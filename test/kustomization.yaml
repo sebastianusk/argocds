@@ -1,0 +1,4 @@
+configMapGenerator:
+  - name: test-menu
+    literals:
+      - JAVA_HOME=/tmp/java
