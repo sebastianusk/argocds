@@ -1,3 +1,6 @@
-local base = import '../base/runner-scaler.libsonnet';
+local base = import '../base/base.libsonnet';
 
-base.runnerScaler('android') + {}
+[
+  base.actionRunner('android') + {},
+  base.runnerScaler('android') + {},
+]
