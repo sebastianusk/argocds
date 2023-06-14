@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: git@github.com:sebastianusk/argocds.git
     targetRevision: HEAD
-    path: jsonnet/runner
+    path: jsonnet
   destination:
     server: "https://kubernetes.default.svc"
     namespace: jsonnet

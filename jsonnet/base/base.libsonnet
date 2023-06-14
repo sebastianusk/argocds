@@ -28,7 +28,7 @@
         },
 
     },
-  actionRunner(name)::
+  actionRunner(name, requests={})::
     {
       apiVersion: 'actions.summerwind.dev/v1alpha1',
       kind: 'RunnerSet',
@@ -80,7 +80,7 @@
                             },
                           ],
                         resources:
-                          { requests: { memory: '8Gi', cpu: '4000m' } },
+                          { requests: requests },
                         volumeMounts:
                           [
                             {
