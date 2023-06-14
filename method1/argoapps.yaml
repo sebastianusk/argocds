@@ -18,5 +18,5 @@ spec:
       targetRevision: HEAD
       ref: values
   destination:
-    server: mgmt-1-26
+    name: mgmt-1-26
     namespace: method1
