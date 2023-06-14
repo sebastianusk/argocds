@@ -1,14 +1,14 @@
-apiversion: argoproj.io/v1alpha1
-kind: application
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: jsonnet
   namespace: argocd
 spec:
   project: default
   source:
-    repourl: git@github.com:sebastianusk/argocds.git
-    targetrevision: head
-    path: method3/cluster
+    repoURL: git@github.com:sebastianusk/argocds.git
+    targetRevision: HEAD
+    path: jsonnet/runner
   destination:
     server: "https://kubernetes.default.svc"
     namespace: jsonnet
