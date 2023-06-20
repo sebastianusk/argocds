@@ -1,1 +1,3 @@
 identifier: "method1-override"
+test:
+  - name: testb

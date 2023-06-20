@@ -1,2 +1,4 @@
 replicas: 1
 identifier: "base"
+test:
+  - name: testa
