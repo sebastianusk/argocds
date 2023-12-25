@@ -1,23 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: jsonnet
   namespace: argocd
 spec:
-  project: default
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
   generators:
     - git:
-        repoURL: git@github.com:sebastianusk/argocds.git
+        repoURL: https://github.com/sebastianusk/argocds.git
         revision: HEAD
         directories:
-          - path: deployment-jsonnet/values
+          - path: deployment-jsonnet/values/*
   template:
     metadata:
       name: "{{.path.basename}}"
     spec:
-      project: "infra"
+      project: "default"
       source:
-        repoURL: git@github.com:sebastianusk/argocds.git
+        repoURL: https://github.com/sebastianusk/argocds.git
         targetRevision: HEAD
         path: "{{.path.path}}"
       destination:
