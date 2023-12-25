@@ -54,7 +54,7 @@ local tools = import 'tools.libsonnet';
                 ports: [
                   {
                     name: 'http',
-                    containerPort: std.toString(port),
+                    containerPort: port.port,
                     protocol: 'TCP',
                   }
                   for port in input.ports
