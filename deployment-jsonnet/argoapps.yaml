@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jsonnet
+  namespace: argocd
+spec:
+  project: default
+  generators:
+    - git:
+        repoURL: git@github.com:sebastianusk/argocds.git
+        revision: HEAD
+        directories:
+          - path: deployment-jsonnet/values
+  template:
+    metadata:
+      name: "{{.path.basename}}"
+    spec:
+      project: "infra"
+      source:
+        repoURL: git@github.com:sebastianusk/argocds.git
+        targetRevision: HEAD
+        path: "{{.path.path}}"
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: infra
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

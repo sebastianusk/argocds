@@ -1,0 +1,7 @@
+name: test-1
+image: mendhak/http-https-echo:31
+component: infra
+project: infra
+team: infra
+ports:
+  - port: 80

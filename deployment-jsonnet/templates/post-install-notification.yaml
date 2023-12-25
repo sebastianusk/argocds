@@ -1,0 +1,51 @@
+---
+# Source: microservice/templates/post-install-notification.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name:  test-microservice
+  labels:
+    kubecost.team: "infra"
+    kubecost.app: "test"
+    
+    app.kubernetes.io/component: hey
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "stable"
+    helm.sh/chart: microservice-0.7.11
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    helm.sh/hook: post-install, post-upgrade
+    helm.sh/hook-weight: "-5"
+    helm.sh/hook-delete-policy: before-hook-creation, hook-succeeded
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: test
+      labels:
+        kubecost.team: "infra"
+        kubecost.app: "test"
+        
+        app.kubernetes.io/component: hey
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/version: "stable"
+        helm.sh/chart: microservice-0.7.11
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: post-install-notification
+          image: "curlimages/curl:latest"
+          command: ["curl", "-X", "POST",
+              "-H", "Content-type:application/json",
+              "-H", "Authorization: Bearer ",
+              "--data","{'text':'Deployed test stable',\
+                'channel': 'fazz-deployment'}","https://slack.com/api/chat.postMessage"]
+
+        - name: post-install-notification-1
+          image: "curlimages/curl:latest"
+          command: ["curl", "-X", "POST",
+              "-H", "Content-type:application/json",
+              "-H", "Authorization: Bearer ",
+              "--data","{'text':'Deployed test stable',\
+                  'channel': ''}","https://slack.com/api/chat.postMessage"]

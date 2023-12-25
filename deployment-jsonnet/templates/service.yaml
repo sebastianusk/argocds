@@ -1,0 +1,21 @@
+---
+# Source: microservice/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-microservice
+  labels:
+    app.kubernetes.io/component: hey
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "stable"
+    helm.sh/chart: microservice-0.7.11
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: microservice
+    app.kubernetes.io/instance: test
