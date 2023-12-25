@@ -5,6 +5,6 @@
     metadata: {
       name: input.name + '-microservice',
     },
-    data: input.configMap,
+    data: if std.objectHas(input, 'configMap') then input.configMap else {},
   },
 }

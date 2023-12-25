@@ -9,6 +9,6 @@
       },
     },
     type: 'Opaque',
-    stringData: input.secrets,
+    stringData: if std.objectHas(input, 'secrets') then input.secrets else {},
   },
 }
