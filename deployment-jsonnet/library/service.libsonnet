@@ -9,7 +9,7 @@
       type: 'ClusterIP',
       ports: [
         {
-          port: port,
+          port: port.port,
           targetPort: 'http',
           protocol: 'TCP',
           name: 'http',
