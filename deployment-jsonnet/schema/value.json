@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sebastianusk",
+  "title": "Deployment Values",
+  "description": "Schema to validate deployment",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name of the service",
+      "type": "string"
+    },
+    "image": {
+      "description": "Name of the service",
+      "type": "string"
+    },
+    "size": {
+      "description": "The size of the deployment",
+      "type": "string",
+      "enum": ["small", "medium", "large"]
+    }
+  }
+}
